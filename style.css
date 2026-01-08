@@ -1,49 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  color: #222;
-  padding: 24px;
-}
-
-h1 {
-  margin-bottom: 16px;
-}
-
-/* Currency selector */
-#currency-selector {
-  margin-bottom: 16px;
-}
-
-#currency-selector label {
-  font-weight: 600;
-  margin-right: 8px;
-}
-
-#currency {
-  padding: 6px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #fff;
-}
-
-/* Country selector */
-#countries {
-  margin-bottom: 20px;
-}
-
-#countries button {
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  background: #f3f4f6;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-#countries button:hover {
-  background: #e5e7eb;
-}
-
 /* Calculator box */
 #calculator {
   max-width: 420px;
@@ -53,30 +7,27 @@ h1 {
   background: #fff;
 }
 
-/*
-  IMPORTANT:
-  We used to style ALL divs inside #calculator.
-  That will break once we nest wrappers for currency symbols.
-  So we switch to a specific class: .input-row
-*/
-.input-row {
-  display: flex;
-  justify-content: space-between;
+/* Each calculator row */
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
+  gap: 12px;
   margin-bottom: 10px;
 }
 
-.input-row label {
-  flex: 1;
-  margin-right: 12px;
+/* Labels */
+.calc-row label {
+  font-weight: 500;
 }
 
-/* Currency-prefixed inputs (used in next step) */
+/* Currency input wrapper */
 .currency-input {
   display: flex;
   align-items: center;
 }
 
+/* Currency symbol */
 .currency-symbol {
   padding: 6px 10px;
   background: #f3f4f6;
@@ -89,35 +40,11 @@ h1 {
   text-align: center;
 }
 
+/* Input box */
 .currency-input input {
   width: 120px;
   padding: 6px 10px;
   border: 1px solid #d1d5db;
   border-radius: 0 6px 6px 0;
   outline: none;
-}
-
-.currency-input input:focus {
-  border-color: #2c7be5;
-}
-
-/* Calculate button */
-#calculate {
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: #2c7be5;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#calculate:hover {
-  background: #1f64c8;
-}
-
-/* Result block */
-#result {
-  margin-top: 20px;
-  font-size: 16px;
 }
