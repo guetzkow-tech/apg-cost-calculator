@@ -1,4 +1,14 @@
 let activeCountry = null;
+// If a country is provided in the URL, auto-select it and hide the country buttons.
+const params = new URLSearchParams(window.location.search);
+const presetCountry = params.get("country");
+
+if (presetCountry) {
+  activeCountry = presetCountry.toLowerCase().trim();
+  const countriesEl = document.getElementById("countries");
+  if (countriesEl) countriesEl.style.display = "none";
+}
+
 
 /* ======================================================
    Currency orientation (NOT exchange guarantees)
