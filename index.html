@@ -1,1 +1,63 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Points Guide — Cost of Living Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>All Points Guide — Cost of Living Calculator</h1>
+
+  <!-- Country selector -->
+  <div id="countries">
+    <button data-country="albania">Albania</button>
+    <button data-country="argentina">Argentina</button>
+    <button data-country="vietnam">Vietnam</button>
+  </div>
+
+  <!-- Calculator inputs -->
+  <div id="calculator">
+    <div>
+      <label>Housing</label>
+      <input id="housing" type="number">
+    </div>
+
+    <div>
+      <label>Groceries</label>
+      <input id="groceries" type="number">
+    </div>
+
+    <div>
+      <label>Transportation</label>
+      <input id="transportation" type="number">
+    </div>
+
+    <div>
+      <label>Utilities</label>
+      <input id="utilities" type="number">
+    </div>
+
+    <div>
+      <label>Healthcare</label>
+      <input id="healthcare" type="number">
+    </div>
+
+    <div>
+      <label>Discretionary</label>
+      <input id="discretionary" type="number">
+    </div>
+
+    <button id="calculate">Calculate</button>
+  </div>
+
+  <!-- Results -->
+  <div id="result"></div>
+
+  <!-- Scripts (order matters) -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
