@@ -14,10 +14,12 @@
     All Points Guide — Cost of Living Calculator
   </h1>
 
+  <!-- Country title (set dynamically by app.js) -->
   <h2 id="country-title" style="margin-top:4px; margin-bottom:20px; color:#555;"></h2>
 
   <p style="font-size:14px; color:#555; margin-bottom:20px;">
     Enter your current monthly spending to estimate what a similar lifestyle may cost abroad.
+    Estimates use conservative national averages and are intended for planning purposes only.
   </p>
 
   <!-- Country selector (hidden automatically when ?country= is used) -->
@@ -27,37 +29,50 @@
     <button data-country="vietnam">Vietnam</button>
   </div>
 
+  <!-- Currency selector (orientation only) -->
+  <div id="currency-selector" style="margin-bottom:18px;">
+    <label for="currency" style="font-weight:600; margin-right:8px;">
+      Enter your current monthly costs in:
+    </label>
+    <select id="currency">
+      <option value="USD">USD — U.S. Dollar</option>
+      <option value="CAD">CAD — Canadian Dollar</option>
+      <option value="GBP">GBP — British Pound</option>
+      <option value="EUR">EUR — Euro</option>
+    </select>
+  </div>
+
   <!-- Calculator inputs -->
   <div id="calculator">
 
     <div>
       <label>Housing</label>
-      <input id="housing" type="number">
+      <input id="housing" type="number" placeholder="Amount">
     </div>
 
     <div>
       <label>Groceries</label>
-      <input id="groceries" type="number">
+      <input id="groceries" type="number" placeholder="Amount">
     </div>
 
     <div>
       <label>Transportation</label>
-      <input id="transportation" type="number">
+      <input id="transportation" type="number" placeholder="Amount">
     </div>
 
     <div>
       <label>Utilities</label>
-      <input id="utilities" type="number">
+      <input id="utilities" type="number" placeholder="Amount">
     </div>
 
     <div>
       <label>Healthcare</label>
-      <input id="healthcare" type="number">
+      <input id="healthcare" type="number" placeholder="Amount">
     </div>
 
     <div>
       <label>Discretionary</label>
-      <input id="discretionary" type="number">
+      <input id="discretionary" type="number" placeholder="Amount">
     </div>
 
     <button id="calculate">Calculate</button>
