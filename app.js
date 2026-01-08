@@ -1,5 +1,13 @@
 let activeCountry = null;
 
+// Approximate currency conversion (planning only)
+const CURRENCY_RATES = {
+  USD: 1,
+  CAD: 1.35,
+  GBP: 0.79,
+  EUR: 0.92
+};
+
 // Handle country selection
 document.querySelectorAll("[data-country]").forEach(button => {
   button.addEventListener("click", () => {
@@ -22,7 +30,6 @@ document.getElementById("calculate").addEventListener("click", () => {
 
   const ratios = countryData.buckets;
 
-  // Read inputs
   const inputs = {
     housing: Number(document.getElementById("housing").value || 0),
     groceries: Number(document.getElementById("groceries").value || 0),
@@ -32,32 +39,41 @@ document.getElementById("calculate").addEventListener("click", () => {
     discretionary: Number(document.getElementById("discretionary").value || 0)
   };
 
-  // Step 1: total current monthly spend
-  let currentTotal = 0;
+  // Step 1: total current monthly spend (USD)
+  let currentTotalUSD = 0;
   for (const key in inputs) {
-    currentTotal += inputs[key];
+    currentTotalUSD += inputs[key];
   }
 
-  // Step 2: translate lifestyle using country ratios
-  let adjustedTotal = 0;
+  // Step 2: translate lifestyle (USD)
+  let adjustedTotalUSD = 0;
   for (const key in inputs) {
-    adjustedTotal += inputs[key] * ratios[key];
+    adjustedTotalUSD += inputs[key] * ratios[key];
   }
 
-  // Step 3: compute difference
+  // Step 3: apply display currency
+  const currency = document.getElementById("currency").value;
+  const rate = CURRENCY_RATES[currency] || 1;
+
+  const currentTotal = currentTotalUSD * rate;
+  const adjustedTotal = adjustedTotalUSD * rate;
+
   const differencePercent =
-    ((adjustedTotal - currentTotal) / currentTotal) * 100;
+    ((adjustedTotalUSD - currentTotalUSD) / currentTotalUSD) * 100;
 
-  // Step 4: display result cleanly
+  // Step 4: display
   document.getElementById("result").innerHTML = `
     <div style="padding:16px; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb;">
-      <div><strong>Your current monthly budget:</strong> $${currentTotal.toFixed(0)}</div>
+      <div><strong>Your current monthly budget:</strong> ${currency} ${currentTotal.toFixed(0)}</div>
       <div style="margin-top:6px;">
         <strong>Estimated monthly cost in ${activeCountry.replace(/_/g, " ")}:</strong>
-        $${adjustedTotal.toFixed(0)}
+        ${currency} ${adjustedTotal.toFixed(0)}
       </div>
       <div style="margin-top:6px; color:#555;">
         (${differencePercent.toFixed(1)}% difference)
+      </div>
+      <div style="margin-top:10px; font-size:12px; color:#666;">
+        Estimates use approximate currency conversions for planning purposes.
       </div>
     </div>
   `;
