@@ -15,6 +15,22 @@ document.querySelectorAll("[data-country]").forEach(button => {
   });
 });
 
+
+const CURRENCY_SYMBOLS = {
+  USD: "$",
+  CAD: "$",
+  GBP: "£",
+  EUR: "€"
+};
+
+// Update currency symbols when selector changes
+document.getElementById("currency").addEventListener("change", (e) => {
+  const symbol = CURRENCY_SYMBOLS[e.target.value] || "$";
+  document.querySelectorAll(".currency-symbol").forEach(el => {
+    el.textContent = symbol;
+  });
+});
+
 // Handle calculation
 document.getElementById("calculate").addEventListener("click", () => {
   if (!activeCountry) {
