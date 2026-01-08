@@ -42,14 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
   if (activeCountry) {
     const countriesEl = document.getElementById("countries");
     if (countriesEl) countriesEl.style.display = "none";
+    updateCountryTitle();
   }
 
   // Manual country selection
   document.querySelectorAll("[data-country]").forEach(button => {
     button.addEventListener("click", () => {
       activeCountry = button.dataset.country;
+      updateCountryTitle();
     });
   });
+
+  // Recalculate automatically if currency changes
+  const currencySelect = document.getElementById("currency");
+  if (currencySelect) {
+    currencySelect.addEventListener("change", () => {
+      if (document.getElementById("result").innerHTML.trim() !== "") {
+        calculate();
+      }
+    });
+  }
 
   // Calculate button
   const calcBtn = document.getElementById("calculate");
@@ -152,6 +164,14 @@ function calculate() {
 /* ======================================================
    Helpers
    ====================================================== */
+
+function updateCountryTitle() {
+  const el = document.getElementById("country-title");
+  if (!el || !activeCountry) return;
+
+  el.textContent =
+    `${prettyCountry(activeCountry)} — Cost of Living Estimate`;
+}
 
 function prettyLabel(key) {
   const map = {
