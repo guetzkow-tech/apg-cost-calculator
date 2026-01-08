@@ -34,7 +34,7 @@ h1 {
   background: #fff;
 }
 
-#calculator div {
+#calculator > div {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
