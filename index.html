@@ -9,47 +9,33 @@
 
   <h1>All Points Guide — Cost of Living Calculator</h1>
 
-  <!-- Currency selector (orientation) -->
-  <div id="currency-selector" style="margin-bottom:20px;">
-    <label style="font-weight:600; margin-right:8px;">
-      Enter your current monthly budget in:
-    </label>
-    <select id="currency">
-      <option value="USD">USD</option>
-      <option value="CAD">CAD</option>
-      <option value="GBP">GBP</option>
-      <option value="EUR">EUR</option>
-    </select>
-  </div>
-
-  <!-- Country selector -->
+  <!-- Country selector (hidden automatically when ?country= is used) -->
   <div id="countries" style="margin-bottom:20px;">
     <button data-country="albania">Albania</button>
     <button data-country="argentina">Argentina</button>
     <button data-country="vietnam">Vietnam</button>
   </div>
 
+  <!-- Currency selector (orientation for inputs) -->
+  <div id="currency-selector" style="margin-bottom:16px;">
+    <label style="font-weight:600; margin-right:8px;">
+      Enter your current monthly costs in:
+    </label>
+    <select id="currency">
+      <option value="USD">USD — U.S. Dollar</option>
+      <option value="CAD">CAD — Canadian Dollar</option>
+      <option value="GBP">GBP — British Pound</option>
+      <option value="EUR">EUR — Euro</option>
+    </select>
+  </div>
+
   <!-- Calculator inputs -->
-<!-- Currency selector -->
-<div id="currency-selector" style="margin-bottom:16px;">
-  <label style="font-weight:600; margin-right:8px;">
-    Enter your current monthly costs in:
-  </label>
-  <select id="currency">
-    <option value="USD">USD — U.S. Dollar</option>
-    <option value="CAD">CAD — Canadian Dollar</option>
-    <option value="GBP">GBP — British Pound</option>
-    <option value="EUR">EUR — Euro</option>
-  </select>
-</div>
-
-  
   <div id="calculator">
-<div>
-  <label>Housing</label>
-  <input id="housing" type="number">
-</div>
 
+    <div>
+      <label>Housing</label>
+      <input id="housing" type="number">
+    </div>
 
     <div>
       <label>Groceries</label>
