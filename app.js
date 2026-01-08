@@ -22,6 +22,7 @@ document.getElementById("calculate").addEventListener("click", () => {
 
   const ratios = countryData.buckets;
 
+  // Read inputs
   const inputs = {
     housing: Number(document.getElementById("housing").value || 0),
     groceries: Number(document.getElementById("groceries").value || 0),
@@ -31,13 +32,33 @@ document.getElementById("calculate").addEventListener("click", () => {
     discretionary: Number(document.getElementById("discretionary").value || 0)
   };
 
-  let total = 0;
-
+  // Step 1: total current monthly spend
+  let currentTotal = 0;
   for (const key in inputs) {
-    total += inputs[key] * ratios[key];
+    currentTotal += inputs[key];
   }
 
-  document.getElementById("result").innerHTML =
-    `<strong>Estimated Monthly Cost:</strong> $${total.toFixed(0)}`;
-});
+  // Step 2: translate lifestyle using country ratios
+  let adjustedTotal = 0;
+  for (const key in inputs) {
+    adjustedTotal += inputs[key] * ratios[key];
+  }
 
+  // Step 3: compute difference
+  const differencePercent =
+    ((adjustedTotal - currentTotal) / currentTotal) * 100;
+
+  // Step 4: display result cleanly
+  document.getElementById("result").innerHTML = `
+    <div style="padding:16px; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb;">
+      <div><strong>Your current monthly budget:</strong> $${currentTotal.toFixed(0)}</div>
+      <div style="margin-top:6px;">
+        <strong>Estimated monthly cost in ${activeCountry.replace(/_/g, " ")}:</strong>
+        $${adjustedTotal.toFixed(0)}
+      </div>
+      <div style="margin-top:6px; color:#555;">
+        (${differencePercent.toFixed(1)}% difference)
+      </div>
+    </div>
+  `;
+});
