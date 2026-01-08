@@ -8,6 +8,10 @@ h1 {
   margin-bottom: 16px;
 }
 
+/* =====================
+   Country selector
+   ===================== */
+
 #countries {
   margin-bottom: 20px;
 }
@@ -26,6 +30,10 @@ h1 {
   background: #e5e7eb;
 }
 
+/* =====================
+   Calculator inputs
+   ===================== */
+
 #calculator {
   max-width: 420px;
   padding: 16px;
@@ -37,6 +45,7 @@ h1 {
 #calculator > div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -46,7 +55,12 @@ h1 {
 
 #calculator input {
   width: 120px;
+  padding: 6px;
 }
+
+/* =====================
+   Calculate button
+   ===================== */
 
 #calculate {
   margin-top: 12px;
@@ -62,7 +76,54 @@ h1 {
   background: #1f64c8;
 }
 
+/* =====================
+   Results layout
+   ===================== */
+
 #result {
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: 24px;
+  font-size: 15px;
+}
+
+.apg-results {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.apg-results h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.apg-result-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.apg-total {
+  font-weight: bold;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.apg-divider {
+  margin: 16px 0;
+  border-top: 1px solid #d1d5db;
+}
+
+.apg-highlight {
+  margin-top: 12px;
+  padding: 10px;
+  background: #e9f3ff;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.apg-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #555;
 }
